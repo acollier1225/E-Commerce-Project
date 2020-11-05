@@ -8,7 +8,7 @@ import './Navbar.css';
 
 const Navbar = () => {
     const [list, showList] = useState(false);
-    const [selected, selectTab] = useState(false);
+    const [selectedTab, selectTab] = useState(null);
     const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
     const ref = useRef();
@@ -37,12 +37,11 @@ const Navbar = () => {
         }
     }
 
-
     return ( 
         <div ref={ref}>
             <nav>
                 <ul>
-                    <li className="logo">
+                    <li className="logo" onClick={() => dispatch(changeMenu('HOME'))}>
                         Style<span>Out</span>
                     </li>
                     <li onClick={() => dispatch(changeMenu('MEN'))}>MEN</li>
@@ -51,15 +50,18 @@ const Navbar = () => {
                     <li className="total">
                         <Total />
                     </li>
-                    <li onClick={showCart} className="total">
-                    <i className="fas fa-shopping-bag"></i>
+                    <li className="total">
+                        <div onClick={showCart} className="total">
+                        <i className="fas fa-shopping-bag"></i>
+                        {cart.length > 0 ? <span className="number">
+                                {cart.length}
+                        
+                            
+                            </span> : null}
+                        </div>
                         <div className="shoppingCart">
                             { list  ? <ShoppingCart /> : null }
                         </div>
-                        {cart.length > 0 ? <span className="number">
-                            {cart.length}
-                        </span> : null}
-                        
                     </li>
                 </ul>
             </nav> 

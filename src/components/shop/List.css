@@ -1,4 +1,8 @@
 .item {
   display: inline-flex;
-  margin: 10px;
+  margin: 15px;
+}
+
+.item button {
+  margin-left: 0;
 }

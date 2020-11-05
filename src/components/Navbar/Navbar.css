@@ -5,14 +5,14 @@ nav {
   height: 48px;
 }
 
-ul {
+nav ul {
   list-style-type: none;
   overflow: hidden;
   padding: 0 0 0 0;
   margin: 0;
 }
 
-nav li {
+nav ul li {
   padding: 14px 16px;
   display: block;
   margin: 0 0 0 0;

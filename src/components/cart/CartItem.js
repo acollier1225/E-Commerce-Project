@@ -13,6 +13,8 @@ const CartItem = (props) => {
                 <span>
                     {props.name}
                     <br />
+                    {props.size}
+                    <br />
                     ${props.price}.00
                     <br />
                 </span>

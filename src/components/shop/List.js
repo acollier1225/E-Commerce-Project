@@ -36,9 +36,11 @@ const List = (props) => {
         }
 
     ]
-
-    // const itemList = items.map(item => {
     
+    console.log(visibleMenu);
+    if (visibleMenu === 'HOME') {
+        return <div>Hello</div>
+    }
     const newList = items.filter(item => item.style === visibleMenu)
     const itemList = newList.map(item => {
         

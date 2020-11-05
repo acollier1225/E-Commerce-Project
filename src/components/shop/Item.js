@@ -1,10 +1,31 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../actions';
+import SizeModal from './SizeModal';
 import './Item.css';
 
 const Item = (props) => {
+    const [selected, selectSize] = useState(null);
+    const [shown, showModal] = useState(false);
     const dispatch = useDispatch();
+
+    const changeSize = (size) => {
+        selectSize(size);
+    }
+
+    const modal = () => {
+        showModal(!shown);
+    }
+
+    const addToCart = () => {
+        dispatch(addItem(props.name, props.price, props.image, selected));
+        selectSize(null);
+    }
+
+    const sizes = ['XS', 'S', 'M', 'L', 'XL'];
+    const sizeList = sizes.map(size => {
+        return <li onClick={() => changeSize(size)} className={selected === size ? 'square selected' : 'square'} size={size} >{size}</li>
+    })
 
     return ( 
         <div>
@@ -15,14 +36,13 @@ const Item = (props) => {
             ${props.price}.00
             <br />
             <ul className="sizes">
-                <li><span>XS</span></li>
-                <li><span>S</span></li>
-                <li><span>M</span></li>
-                <li><span>L</span></li>
-                <li><span>XL</span></li>
+                {sizeList}
             </ul>
             <br />
-            <button onClick={() => dispatch(addItem(props.name, props.price, props.image))}>Add to Cart</button>
+            <button 
+                onClick={selected !== null ? () => addToCart() : () => modal()}
+            >Add to Cart</button>
+            <SizeModal image={props.image} name={props.name} price={props.price} onClose={() => modal()} show={shown} />
         </div>
      );
 }

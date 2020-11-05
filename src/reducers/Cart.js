@@ -8,7 +8,8 @@ const cart = (state = [], action) => {
                         name: action.payload,
                         id: action.id,
                         price: action.price,
-                        image: action.image
+                        image: action.image,
+                        size: action.size
                     }
                 ]
             );
