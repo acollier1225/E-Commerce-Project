@@ -8,12 +8,12 @@ import './Navbar.css';
 
 const Navbar = () => {
     const [list, showList] = useState(false);
-    const [selectedTab, selectTab] = useState(null);
+    const [selectedTab, selectTab] = useState('HOME');
     const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
     const ref = useRef();
 
-    const navs = ['StyleOut', 'MEN', 'WOMEN', 'KIDS'];
+    const navs = ['HOME', 'MEN', 'WOMEN', 'KIDS'];
 
     const changeTab = (tab) => {
         dispatch(changeMenu(tab));

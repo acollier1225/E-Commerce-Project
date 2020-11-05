@@ -1,0 +1,10 @@
+.logo-bar {
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  overflow-x: visible;
+  padding: 3px;
+  font-family: "Lobster", cursive;
+  font-size: 18px;
+}
