@@ -1,0 +1,19 @@
+body {
+  font-family: "Poppins", "san-serif";
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+button {
+  background-color: red;
+  font-family: "Poppins", "san-serif";
+  border: none;
+  color: white;
+  margin: 5px;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: #800000;
+  cursor: pointer;
+}

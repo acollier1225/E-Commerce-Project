@@ -1,13 +1,25 @@
 import React from 'react';
 import { removeItem } from '../../actions';
 import { useDispatch } from 'react-redux';
+import './CartItem.css'
 
 const CartItem = (props) => {
     const dispatch = useDispatch();
 
     return ( 
-        
-        <div onClick={() => dispatch(removeItem(props.id, props.price))}>{props.name}{props.price}</div>
+        <div className="cartItem">
+            <div className="details">
+                <img src={props.image} />
+                <span>
+                    {props.name}
+                    <br />
+                    ${props.price}.00
+                    <br />
+                </span>
+            </div>
+            <br />
+            <button onClick={() => dispatch(removeItem(props.id, props.price))}>REMOVE</button>
+        </div>
      );
 }
  

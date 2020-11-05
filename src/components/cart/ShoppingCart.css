@@ -1,0 +1,13 @@
+.shoppingCart {
+  z-index: 200;
+  position: absolute;
+  right: 70px;
+  margin-top: 2%;
+  background-color: white;
+  overflow: hidden;
+  line-height: 25px;
+}
+
+.shoppingCart:hover {
+  color: black;
+}

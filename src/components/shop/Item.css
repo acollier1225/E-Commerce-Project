@@ -1,0 +1,26 @@
+img {
+  height: 150px;
+  width: 150px;
+}
+
+.sizes {
+  font-size: 13px;
+  text-align: center;
+  position: absolute;
+}
+
+.sizes li {
+  display: inline;
+  text-align: center;
+  margin: 5px;
+  width: 100px;
+}
+
+/* .sizes li span {
+  width: 30px;
+  height: 30px;
+} */
+
+.sizes li:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,28 @@
+.cartItem {
+  border: 1px solid black;
+  width: 240px;
+  height: 120px;
+  text-align: center;
+  padding-bottom: 10%;
+  /* position: relative;
+  right: 10px; */
+}
+
+.cartItem img {
+  height: 90px;
+  width: 90px;
+  padding: 3% 1% 0 0;
+  margin-bottom: 0;
+  margin: 0 0 0 0;
+  float: left;
+  position: relative;
+  left: -30px;
+}
+
+.details {
+  display: inline-flex;
+}
+
+.details span {
+  float: right;
+}
