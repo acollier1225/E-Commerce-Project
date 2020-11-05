@@ -13,7 +13,7 @@ const SizeModal = (props) => {
     }
 
     const sizeList = sizes.map(size => {
-        return <li onClick={() => changeSize(size)} className={selected === size ? 'square selected' : 'square'} size={size} >{size}</li>
+        return <li key={size} onClick={() => changeSize(size)} className={selected === size ? 'square selected' : 'square'} size={size} >{size}</li>
     })
 
     const addToCart = () => {
@@ -30,11 +30,9 @@ const SizeModal = (props) => {
         return (
             <button 
                 onClick={() => addToCart()}
-            >Add to Cart</button>
+            >ADD TO CART</button>
         )
     }
-
-
 
     if( !props.show ) {
         return null;
@@ -44,25 +42,25 @@ const SizeModal = (props) => {
                 <div className="modal-content">
                     Please Select a Size
                     <br />
-                    {props.name}
-                    <br />
-                    <img src={props.image}></img>
-                    <br />
-                    ${props.price}.00
-                    <br />
-                    <ul className="sizes">
-                        {sizeList}
-                    </ul>
-                    <br />
-                    <div>
-                        {selected ? selectedButton() : <button class="selectSize" onClick={null}>Please Select a Size</button>}
+                    <div id="modal-left-side">
+                        {props.name}
+                        <br />
+                        <img src={props.image}></img>
                     </div>
-                    
-                    <br />
-                    <button onClick={() => cancelButton()}>Cancel</button>
+                    <div id="modal-right-side">
+                        ${props.price}.00
+                        <br />
+                        <ul className="sizes">
+                            {sizeList}
+                        </ul>
+                        <br />
+                        <div>
+                            {selected ? selectedButton() : <button className="selectSize" onClick={null}>SELECT SIZE</button>}
+                        </div>
+                        <br />
+                        <button onClick={() => cancelButton()}>CANCEL</button>
+                    </div>
                 </div>
-                
-                
             </div>
         )
     }

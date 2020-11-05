@@ -13,7 +13,7 @@ const CartItem = (props) => {
                 <span>
                     {props.name}
                     <br />
-                    {props.size}
+                    Size: {props.size}
                     <br />
                     ${props.price}.00
                     <br />

@@ -5,15 +5,16 @@ body {
 }
 
 button {
-  background-color: red;
+  background-color: black;
   font-family: "Poppins", "san-serif";
   border: none;
   color: white;
-  margin: 5px;
+  /* margin: 5px; */
   padding: 5px;
+  width: 95%;
 }
 
 button:hover {
-  background-color: #800000;
+  background-color: #3f3f3f;
   cursor: pointer;
 }

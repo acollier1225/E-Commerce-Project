@@ -13,6 +13,21 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const ref = useRef();
 
+    const navs = ['StyleOut', 'MEN', 'WOMEN', 'KIDS'];
+
+    const changeTab = (tab) => {
+        dispatch(changeMenu(tab));
+        selectTab(tab);
+    }
+
+    const tab = (nav) => {
+        return selectedTab !== null && selectedTab === nav ? "selected" : null
+    }
+
+    const navList = navs.map(nav => {
+        return <li key={nav} onClick={() => changeTab(nav)} className={tab(nav)}>{nav}</li>
+    })
+
     useEffect(() => {
         const onBodyClick = (event) => {
             if (ref.current.contains(event.target)) {
@@ -41,12 +56,10 @@ const Navbar = () => {
         <div ref={ref}>
             <nav>
                 <ul>
-                    <li className="logo" onClick={() => dispatch(changeMenu('HOME'))}>
+                    {/* <li className="logo" onClick={() => dispatch(changeMenu('HOME'))}>
                         Style<span>Out</span>
-                    </li>
-                    <li onClick={() => dispatch(changeMenu('MEN'))}>MEN</li>
-                    <li onClick={() => dispatch(changeMenu('WOMEN'))}>WOMEN</li>
-                    <li onClick={() => dispatch(changeMenu('KIDS'))}>KIDS</li>
+                    </li> */}
+                    {navList}
                     <li className="total">
                         <Total />
                     </li>

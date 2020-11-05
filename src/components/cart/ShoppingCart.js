@@ -15,7 +15,7 @@ const ShoppingCart = () => {
                     </div>    
                 )
             })}
-            <button>CHECK OUT</button>
+            <button id="check-out">CHECK OUT</button>
         </div>
      );
 }

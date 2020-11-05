@@ -24,7 +24,7 @@ const Item = (props) => {
 
     const sizes = ['XS', 'S', 'M', 'L', 'XL'];
     const sizeList = sizes.map(size => {
-        return <li onClick={() => changeSize(size)} className={selected === size ? 'square selected' : 'square'} size={size} >{size}</li>
+        return <li key={size} onClick={() => changeSize(size)} className={selected === size ? 'square selected' : 'square'} size={size} >{size}</li>
     })
 
     return ( 
@@ -35,14 +35,21 @@ const Item = (props) => {
             <br />
             ${props.price}.00
             <br />
-            <ul className="sizes">
-                {sizeList}
-            </ul>
-            <br />
-            <button 
-                onClick={selected !== null ? () => addToCart() : () => modal()}
-            >Add to Cart</button>
-            <SizeModal image={props.image} name={props.name} price={props.price} onClose={() => modal()} show={shown} />
+            <div>
+                <ul className="sizes">
+                    {sizeList}
+                </ul>
+                <br />
+                <button 
+                    onClick={selected !== null ? () => addToCart() : () => modal()}
+                >Add to Cart</button>
+            </div>
+            <SizeModal 
+                image={props.image} 
+                name={props.name} 
+                price={props.price} 
+                onClose={() => modal()} show={shown} 
+            />
         </div>
      );
 }

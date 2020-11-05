@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import HomePage from './Home';
 import Item from './Item';
 import './List.css';
 
@@ -37,9 +38,8 @@ const List = (props) => {
 
     ]
     
-    console.log(visibleMenu);
     if (visibleMenu === 'HOME') {
-        return <div>Hello</div>
+        return <HomePage />
     }
     const newList = items.filter(item => item.style === visibleMenu)
     const itemList = newList.map(item => {
