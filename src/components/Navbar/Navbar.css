@@ -1,28 +1,28 @@
 nav {
   padding: 0px 0px 0px 0px;
   overflow: hidden;
-  border-bottom: 6px solid #d3d3d3;
   height: 48px;
 }
 
 nav ul {
   list-style-type: none;
-  overflow: hidden;
+  overflow: visible;
   padding: 0 0 0 0;
   margin: 0;
 }
 
 nav ul li {
   padding: 14px 16px;
+  padding-bottom: 0;
+  margin-bottom: 0;
   display: block;
-  margin: 0 0 0 0;
+  margin: 0 0 0 10px;
   justify-content: center;
   float: left;
 }
 
 nav li:hover {
-  background-color: #d3d3d3;
-  color: white;
+  color: black;
   cursor: pointer;
 }
 
@@ -52,4 +52,10 @@ nav li:hover {
 
 #submenu {
   height: 50px;
+}
+
+.selected-style {
+  color: grey;
+  border-bottom: 1px solid grey;
+  border-bottom-width: 50%;
 }

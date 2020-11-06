@@ -5,19 +5,22 @@
   padding: 0 40px 0 40px;
   justify-content: space-between;
   width: 100%;
-  /* margin-left: 150px; */
   padding: 0;
   text-align: center;
 }
 
-#clothes-list li a {
+#clothes-list li {
+  width: 20%;
+}
+
+#clothes-list li {
   color: black;
   text-decoration: none;
   justify-content: center;
-  margin: 50px 75px 50px 75px;
 }
 
-#clothes-list li a:hover {
+#clothes-list li:hover {
   border-bottom: 1px solid black;
   color: grey;
+  cursor: pointer;
 }

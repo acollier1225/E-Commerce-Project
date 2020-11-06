@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeMenu } from '../../actions';
+import { changeMenu, changeClothes, selectTab } from '../../actions';
 import ShoppingCart from '../cart/ShoppingCart';
 import Submenu from '../shop/submenu/Submenu';
 import Total from '../Total';
@@ -10,23 +10,25 @@ import './Navbar.css';
 
 const Navbar = () => {
     const [list, showList] = useState(false);
-    const [selectedTab, selectTab] = useState('HOME');
     const [showing, showMenu] = useState(false);
     const [hoveredTab, hoverTab] = useState(null);
 
     const cart = useSelector(state => state.cart);
+    const selectedTab = useSelector(state => state.tab);
+
     const dispatch = useDispatch();
     const ref = useRef();
 
     const navs = ['HOME', 'MEN', 'WOMEN', 'KIDS'];
 
     const changeTab = (tab) => {
+        dispatch(changeClothes('ALL'));
         dispatch(changeMenu(tab));
         selectTab(tab);
     }
 
     const tab = (nav) => {
-        return (selectedTab !== null && selectedTab === nav) || hoveredTab === nav ? "selected" : null
+        return (selectedTab === nav) || hoveredTab === nav ? "selected-style" : null
     }
 
     const navList = navs.map(nav => {
@@ -34,13 +36,21 @@ const Navbar = () => {
             onMouseOver={() => hover(nav)} 
             key={nav} 
             onClick={() => changeTab(nav)} 
-            className={tab(nav)}>{nav}
+            className={tab(nav)}>
+                {nav}               {nav !== 'HOME' ? <i className="fas fa-angle-down"></i> : null}
+                
         </li>
     });
 
     const hover = (nav) => {
-        hoverTab(nav);
-        showMenu(true);
+        if (nav !== 'HOME') {
+            hoverTab(nav);
+            showMenu(true);
+        }
+
+        if (nav === 'HOME') {
+            showMenu(false);
+        }
     }
 
     useEffect(() => {
@@ -98,8 +108,6 @@ const Navbar = () => {
                         <i className="fas fa-shopping-bag"></i>
                         {cart.length > 0 ? <span className="number">
                                 {cart.length}
-                        
-                            
                             </span> : null}
                         </div>
                         <div className="shoppingCart">
@@ -108,7 +116,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </nav> 
-            {showing ? <div id="submenu"><Submenu onMouseOver={() => hover(hoveredTab)}></Submenu></div> : null}
+            {showing ? <div id="submenu"><Submenu style={hoveredTab} onMouseOver={() => hover(hoveredTab)}></Submenu></div> : null}
         </div>
         
     );

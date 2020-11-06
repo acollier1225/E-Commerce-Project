@@ -21,6 +21,18 @@ export const removeItem = (id, price) => {
 
 export const changeMenu = (menu) => {
     return {
-        type: menu,
+        type: menu
+    }
+}
+
+export const changeClothes = (clothes) => {
+    return {
+        type: clothes
+    }
+}
+
+export const selectTab = (tab) => {
+    return {
+        type: tab
     }
 }
