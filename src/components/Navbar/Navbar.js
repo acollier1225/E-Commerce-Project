@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { changeMenu } from '../../actions';
 import ShoppingCart from '../cart/ShoppingCart';
-import { changeMenu } from '../../actions'
-import '../cart/ShoppingCart.css'
+import Submenu from '../shop/submenu/Submenu';
 import Total from '../Total';
+import '../cart/ShoppingCart.css';
 import './Navbar.css';
+
 
 const Navbar = () => {
     const [list, showList] = useState(false);
     const [selectedTab, selectTab] = useState('HOME');
+    const [showing, showMenu] = useState(false);
+    const [hoveredTab, hoverTab] = useState(null);
+
     const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
     const ref = useRef();
@@ -21,12 +26,22 @@ const Navbar = () => {
     }
 
     const tab = (nav) => {
-        return selectedTab !== null && selectedTab === nav ? "selected" : null
+        return (selectedTab !== null && selectedTab === nav) || hoveredTab === nav ? "selected" : null
     }
 
     const navList = navs.map(nav => {
-        return <li key={nav} onClick={() => changeTab(nav)} className={tab(nav)}>{nav}</li>
-    })
+        return <li 
+            onMouseOver={() => hover(nav)} 
+            key={nav} 
+            onClick={() => changeTab(nav)} 
+            className={tab(nav)}>{nav}
+        </li>
+    });
+
+    const hover = (nav) => {
+        hoverTab(nav);
+        showMenu(true);
+    }
 
     useEffect(() => {
         const onBodyClick = (event) => {
@@ -44,6 +59,23 @@ const Navbar = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const onBodyHover = (event) => {
+            if (ref.current.contains(event.target)) {
+                return;
+            }
+    
+            showMenu(false);
+            hoverTab(null);
+        };
+
+        document.body.addEventListener('mouseover', onBodyHover);
+
+        return () => {
+            document.body.removeEventListener('mouseover', onBodyHover);
+        };
+    }, []);
+
     const showCart = () => {
         if (cart.length > 0) {
             showList(!list);
@@ -51,14 +83,12 @@ const Navbar = () => {
             <div>Hello</div>
         }
     }
+    
 
     return ( 
         <div ref={ref}>
             <nav>
                 <ul>
-                    {/* <li className="logo" onClick={() => dispatch(changeMenu('HOME'))}>
-                        Style<span>Out</span>
-                    </li> */}
                     {navList}
                     <li className="total">
                         <Total />
@@ -78,6 +108,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </nav> 
+            {showing ? <div id="submenu"><Submenu onMouseOver={() => hover(hoveredTab)}></Submenu></div> : null}
         </div>
         
     );

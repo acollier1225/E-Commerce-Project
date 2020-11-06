@@ -49,3 +49,7 @@ nav li:hover {
 .logo span {
   font-weight: 900;
 }
+
+#submenu {
+  height: 50px;
+}
