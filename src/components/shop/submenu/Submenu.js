@@ -14,7 +14,7 @@ const Submenu = (props) => {
     }
 
 
-    const clothes = ['Shirts', 'Pants', 'Shoes', 'Misc']
+    const clothes = ['SHIRTS', 'PANTS', 'SHOES', 'MISC']
     const clothesList = clothes.map(option => {
         return <li key={option} onClick={() => menuChange(option)}>{option}</li>
     })

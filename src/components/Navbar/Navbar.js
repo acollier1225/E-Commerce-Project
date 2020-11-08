@@ -93,16 +93,12 @@ const Navbar = () => {
             <div>Hello</div>
         }
     }
-    
 
     return ( 
         <div ref={ref}>
             <nav>
                 <ul>
                     {navList}
-                    <li className="total">
-                        <Total />
-                    </li>
                     <li className="total">
                         <div onClick={showCart} className="total">
                         <i className="fas fa-shopping-bag"></i>

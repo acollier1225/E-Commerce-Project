@@ -4,6 +4,10 @@ const total = (state = 0, action) => {
             return state + action.price
         case 'REMOVE_ITEM':
             return state - action.price
+        case 'INCREASE_QUANTITY':
+            return state + action.price
+        case 'DECREASE_QUANTITY':
+            return state - action.price
         default: 
             return state 
     }

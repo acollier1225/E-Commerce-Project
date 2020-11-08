@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, increaseQuantity } from '../../actions';
 import SizeModal from './SizeModal';
 import './Item.css';
 
 const Item = (props) => {
     const [selected, selectSize] = useState(null);
     const [shown, showModal] = useState(false);
+    const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
     const changeSize = (size) => {
@@ -18,8 +19,24 @@ const Item = (props) => {
     }
 
     const addToCart = () => {
-        dispatch(addItem(props.name, props.price, props.image, selected));
-        selectSize(null);
+        console.log(cart.includes(props.name))
+        if (cart.length === 0) {
+            dispatch(addItem(props.name, props.price, props.image, selected, 1));
+            selectSize(null);
+            console.log(cart)
+        } else {
+            cart.map(item => {
+                if (item.name === props.name && item.size === selected) {
+                    console.log('You already have this in your cart')
+                    dispatch(increaseQuantity(item.price))
+                    item.quantity++
+                } else {
+                    dispatch(addItem(props.name, props.price, props.image, selected, 1));
+                    selectSize(null);
+                    console.log(cart)
+                }
+            })
+        }  
     }
 
     const sizes = ['XS', 'S', 'M', 'L', 'XL'];

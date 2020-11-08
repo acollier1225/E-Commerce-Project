@@ -3,6 +3,7 @@ import total from './Total';
 import visibleMenu from './VisibleMenu';
 import clothes from './Clothes';
 import tab from './Tab';
+import quantity from './Quantity';
 import { combineReducers } from 'redux';
 
 const reducers = combineReducers({
@@ -10,7 +11,8 @@ const reducers = combineReducers({
     total,
     visibleMenu,
     clothes,
-    tab
+    tab,
+    quantity
 })
 
 export default reducers;
