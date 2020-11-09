@@ -1,0 +1,58 @@
+.detail img {
+  margin: 0px 50px 50px 10px;
+  width: 40%;
+  height: 90%;
+  display: inline;
+}
+
+.detail span {
+  display: inline;
+  float: right;
+  width: 40%;
+}
+
+.detail {
+  height: 300px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+  font-size: 37px;
+}
+
+#details-sizes {
+  display: inline-flex;
+  width: 100%;
+}
+
+.detail-square {
+  height: 50px;
+  width: 50px;
+  line-height: 350%;
+  position: relative;
+}
+
+#detail-add-button {
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: black;
+  font-size: 16px;
+}
+
+.detail button {
+  width: 25%;
+  margin-bottom: 5px;
+  background-color: white;
+  color: black;
+  outline: none;
+}
+
+.detail button:hover {
+  background-color: white;
+  color: grey;
+}
+
+#quantity {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}

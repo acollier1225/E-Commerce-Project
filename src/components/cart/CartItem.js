@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
 import { removeItem, increaseQuantity, decreaseQuantity } from '../../actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './CartItem.css'
+// import Quantity from './Quantity';
 
 const CartItem = (props) => {
-    const [count, changeCount] = useState(props.count);
+    const cart = useSelector(state => state.cart);
+
+    let item = cart.filter(object => object.id === props.id)
+
+    const [count, changeCount] = useState(item[0].quantity);
     const dispatch = useDispatch();
 
     const decrement = () => {
-        if (count > 1) {
-            changeCount(count - 1)
+        if (item[0].quantity > 1) {
+            item[0].quantity --;
+            changeCount(item[0].quantity)
             dispatch(decreaseQuantity(props.price))
         }
     }
 
     const increment = () => {
-        changeCount(count + 1)
+        item[0].quantity++;
+        changeCount(item[0].quantity)
         dispatch(increaseQuantity(props.price))
     }
 
     const remove = () => {
-        dispatch(removeItem(props.id, (props.price * count)))
+        dispatch(removeItem(props.id, (props.price * item[0].quantity)))
     }
 
     return ( 
@@ -37,6 +44,7 @@ const CartItem = (props) => {
                     <button onClick={() => decrement()}>-</button>
                         <div id="count">{count}</div>
                     <button onClick={() => increment()}>+</button>
+                    {/* <Quantity count={props.count} /> */}
                 </span>
             </div>
             <br />

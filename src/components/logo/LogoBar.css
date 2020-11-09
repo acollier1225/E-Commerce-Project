@@ -8,3 +8,7 @@
   font-family: "Lobster", cursive;
   font-size: 18px;
 }
+
+#logo:hover {
+  cursor: pointer;
+}

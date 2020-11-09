@@ -51,3 +51,12 @@ export const decreaseQuantity = (price) => {
         price: price
     }
 }
+
+export const changeDetails = (name, price, image) => {
+    return {
+        type: 'CHANGE_ITEM',
+        name: name,
+        price: price,
+        image: image
+    }
+}

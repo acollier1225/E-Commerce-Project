@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, increaseQuantity } from '../../actions';
 import './SizeModal.css';
 
 const SizeModal = (props) => {
     const [selected, selectSize] = useState(null);
     const dispatch = useDispatch();
     const sizes = ['XS', 'S', 'M', 'L', 'XL'];
+    const cart = useSelector(state => state.cart)
+    let current;
 
     const changeSize = (size) => {
         selectSize(size);
@@ -17,7 +19,20 @@ const SizeModal = (props) => {
     })
 
     const addToCart = () => {
-        dispatch(addItem(props.name, props.price, props.image, selected));
+        current = cart.filter(item => item.name === props.name && item.size === selected);
+        if (current.length > 0) {
+            cart.map(item => {
+                if (item.name === props.name && item.size === selected) {
+                    dispatch(increaseQuantity(item.price));
+                    item.quantity++;
+                }
+            })
+            selectSize(null);
+        } else {
+            dispatch(addItem(props.name, props.price, props.image, selected, 1));
+            selectSize(null);
+        }
+        current = null;
         {props.onClose()};
     }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, increaseQuantity } from '../../actions';
+import { addItem, increaseQuantity, changeDetails } from '../../actions';
 import SizeModal from './SizeModal';
 import './Item.css';
 
@@ -8,7 +8,9 @@ const Item = (props) => {
     const [selected, selectSize] = useState(null);
     const [shown, showModal] = useState(false);
     const cart = useSelector(state => state.cart);
+    const details = useSelector(state => state.details);
     const dispatch = useDispatch();
+    let current;
 
     const changeSize = (size) => {
         selectSize(size);
@@ -18,25 +20,27 @@ const Item = (props) => {
         showModal(!shown);
     }
 
+    const showDetails = () => {
+        dispatch(changeDetails(props.name, props.price, props.image));
+    }
+
     const addToCart = () => {
-        console.log(cart.includes(props.name))
-        if (cart.length === 0) {
-            dispatch(addItem(props.name, props.price, props.image, selected, 1));
-            selectSize(null);
-            console.log(cart)
-        } else {
+        current = cart.filter(item => item.name === props.name && item.size === selected);
+        console.log(current)
+        if (current.length > 0) {
             cart.map(item => {
                 if (item.name === props.name && item.size === selected) {
-                    console.log('You already have this in your cart')
-                    dispatch(increaseQuantity(item.price))
-                    item.quantity++
-                } else {
-                    dispatch(addItem(props.name, props.price, props.image, selected, 1));
-                    selectSize(null);
-                    console.log(cart)
+                    dispatch(increaseQuantity(item.price));
+                    item.quantity++;
                 }
             })
+            selectSize(null);
+            
+        } else {
+            dispatch(addItem(props.name, props.price, props.image, selected, 1));
+            selectSize(null);
         }  
+        current = null;
     }
 
     const sizes = ['XS', 'S', 'M', 'L', 'XL'];
@@ -46,9 +50,9 @@ const Item = (props) => {
 
     return ( 
         <div>
-            <img src={props.image} />
+            <img className="link" onClick={() => showDetails()} src={props.image} />
             <br />
-            {props.name} 
+            <span className="link" onClick={() => showDetails()}>{props.name}</span> 
             <br />
             ${props.price}.00
             <br />

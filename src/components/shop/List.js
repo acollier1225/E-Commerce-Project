@@ -9,6 +9,7 @@ const List = (props) => {
     const dispatch = useDispatch();
     const visibleMenu = useSelector(state => state.visibleMenu)
     const clothesMenu = useSelector(state => state.clothes)
+    
 
     const items = [
         {

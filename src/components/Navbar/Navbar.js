@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeMenu, changeClothes, selectTab } from '../../actions';
+import { changeMenu, changeClothes, selectTab, changeDetails } from '../../actions';
 import ShoppingCart from '../cart/ShoppingCart';
 import Submenu from '../shop/submenu/Submenu';
 import Total from '../Total';
@@ -22,6 +22,7 @@ const Navbar = () => {
     const navs = ['HOME', 'MEN', 'WOMEN', 'KIDS'];
 
     const changeTab = (tab) => {
+        dispatch(changeDetails())
         dispatch(changeClothes('ALL'));
         dispatch(changeMenu(tab));
         selectTab(tab);
