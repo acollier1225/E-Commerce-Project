@@ -4,7 +4,9 @@ const details = (state = [], action) => {
             return state = [
                 {name: action.name,
                 price: action.price,
-                image: action.image}
+                image: action.image,
+                style: action.style,
+                category: action.category}
             ]
         default:
             return state = []

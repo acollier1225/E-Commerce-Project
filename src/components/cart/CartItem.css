@@ -21,10 +21,14 @@
 }
 
 .details span {
-  float: right;
+  /* float: right; */
 }
 
 #count {
   display: inline-block;
   margin: 0px 10px 0 10px;
+}
+
+#misc-size {
+  color: white;
 }

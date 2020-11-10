@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clothes from '../../reducers/Clothes';
+import Checkout from '../cart/Checkout';
 import HomePage from './Home';
 import Item from './Item';
 import './List.css';
@@ -39,7 +40,7 @@ const List = (props) => {
             price: 7,
             image: 'https://images.unsplash.com/photo-1521369909029-2afed882baee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
             style: 'MEN',
-            type: 'SHOES'
+            type: 'MISC'
         },
         {
             name: 'Dress',
@@ -103,6 +104,9 @@ const List = (props) => {
     if (visibleMenu === 'HOME') {
         return <HomePage />
     }
+    if (visibleMenu === 'CHECKOUT') {
+        return <Checkout />
+    }
     const newList = items.filter(item => item.style === visibleMenu)
     const itemList = newList.map(item => {
     if (clothesMenu === 'ALL' || clothesMenu === item.type) {
@@ -114,6 +118,8 @@ const List = (props) => {
                         name={item.name} 
                         price={item.price} 
                         image={item.image} 
+                        type={item.type}
+                        style={item.style}
                     />
                     <br />
             </div>

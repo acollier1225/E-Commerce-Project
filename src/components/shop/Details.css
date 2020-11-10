@@ -1,21 +1,28 @@
 .detail img {
-  margin: 0px 50px 50px 10px;
-  width: 40%;
-  height: 90%;
+  margin: 0px 50px 0px 10px;
+  float: left;
+  width: auto;
+  max-width: 46%;
+  height: auto;
+  max-height: 100%;
   display: inline;
+  position: relative;
 }
 
 .detail span {
   display: inline;
-  float: right;
+  float: left;
   width: 40%;
+  height: 40%;
 }
 
 .detail {
   height: 300px;
   margin-top: 25px;
-  margin-bottom: 5px;
-  font-size: 37px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  max-height: 400px;
+  max-width: 920px;
 }
 
 #details-sizes {
@@ -36,10 +43,13 @@
   color: white;
   background-color: black;
   font-size: 16px;
+  max-width: 250px;
+  position: relative;
 }
 
 .detail button {
   width: 25%;
+  /* max-width: 250px; */
   margin-bottom: 5px;
   background-color: white;
   color: black;
@@ -53,6 +63,12 @@
 
 #quantity {
   display: inline-block;
-  width: 50%;
+  width: 45%;
+  max-width: 250px;
   text-align: center;
+}
+
+#change-quantity {
+  width: 100%;
+  max-width: 273px;
 }

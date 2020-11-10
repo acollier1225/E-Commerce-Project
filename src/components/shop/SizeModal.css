@@ -15,8 +15,9 @@
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 35%;
-  height: 30%;
+  width: 45%;
+  max-width: 800px;
+  height: 32%;
   text-align: center;
 }
 
@@ -27,11 +28,6 @@
   padding-left: 0%;
   background-color: white;
   position: relative;
-}
-
-.selectedSquare {
-  background-color: #d3d3d3;
-  color: white;
 }
 
 .sizes {
@@ -45,18 +41,19 @@
   padding: 0;
 }
 
-.selectSize {
+.select-size {
   background-color: grey;
 }
 
-.selectSize:hover {
+.select-size:hover {
   background-color: grey;
   cursor: normal;
 }
 
 #modal-right-side {
   float: right;
-  width: 40%;
+  width: 45%;
+  height: 100%;
 }
 
 #modal-right-side button {
@@ -65,4 +62,11 @@
 
 #modal-left-side {
   float: left;
+  width: 35%;
+}
+
+#modal-left-side img {
+  width: 90%;
+  height: 100%;
+  max-height: 160px;
 }

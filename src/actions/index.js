@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const addItem = (name, price, image, size, quantity) => {
+export const addItem = (name, price, image, size, quantity, style) => {
     return {
         type: 'ADD_ITEM',
         payload: name,
@@ -8,7 +8,8 @@ export const addItem = (name, price, image, size, quantity) => {
         price: price,
         image: image,
         size: size,
-        quantity: quantity
+        quantity: quantity,
+        style: style
     }
 }
 
@@ -52,11 +53,13 @@ export const decreaseQuantity = (price) => {
     }
 }
 
-export const changeDetails = (name, price, image) => {
+export const changeDetails = (name, price, image, style, category) => {
     return {
         type: 'CHANGE_ITEM',
         name: name,
         price: price,
-        image: image
+        image: image,
+        style: style,
+        category: category
     }
 }

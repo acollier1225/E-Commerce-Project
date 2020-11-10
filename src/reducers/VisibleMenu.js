@@ -8,6 +8,8 @@ const visibleMenu = (state = 'HOME', action) => {
             return state = 'WOMEN'
         case 'KIDS':
             return state = 'KIDS'
+        case 'CHECKOUT':
+            return state = 'CHECKOUT'
         default:
             return state
     }

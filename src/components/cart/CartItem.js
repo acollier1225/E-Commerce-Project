@@ -37,9 +37,9 @@ const CartItem = (props) => {
                 <span>
                     {props.name}
                     <br />
-                    Size: {props.size}
-                    <br />
                     ${props.price}.00
+                    <br />
+                    <span id={props.type === 'MISC' ? "misc-size" : 'cart-size'}>Size: {props.size}</span>
                     <br />
                     <button onClick={() => decrement()}>-</button>
                         <div id="count">{count}</div>

@@ -7,7 +7,7 @@ const Total = () => {
     return ( 
 
         <div>
-            Total: ${total}
+            Total: ${total}.00
         </div>
      );
 }

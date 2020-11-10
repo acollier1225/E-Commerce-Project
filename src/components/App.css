@@ -9,7 +9,7 @@ button {
   font-family: "Poppins", "san-serif";
   border: none;
   color: white;
-  /* margin: 5px; */
+  outline: none;
   padding: 5px;
   width: 95%;
 }

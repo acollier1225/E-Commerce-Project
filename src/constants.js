@@ -1,0 +1,1 @@
+export let sizes = ['XS', 'S', 'M', 'L', 'XL'];
