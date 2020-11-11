@@ -8,6 +8,8 @@ const tab = (state = 'HOME', action) => {
             return state = 'WOMEN'
         case 'KIDS':
             return state = 'KIDS'
+        case 'WISHLIST':
+            return state = 'WISHLIST'
         default:
             return state
     }

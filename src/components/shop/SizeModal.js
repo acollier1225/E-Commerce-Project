@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, increaseQuantity } from '../../actions';
+import { addItem, increaseQuantity, removeFromWishlist } from '../../actions';
 import './SizeModal.css';
 
 const SizeModal = (props) => {
     const [selected, selectSize] = useState(null);
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart)
+    const wishlist = useSelector(state => state.wishlist);
     let current;
     let sizes;
 
@@ -51,6 +52,12 @@ const SizeModal = (props) => {
             selectSize(null);
         }
         current = null;
+        let currentId = wishlist.filter(item => item.name === props.name )
+            if (currentId.length > 0) {
+                dispatch(removeFromWishlist(currentId[0].id))
+                console.log(currentId)
+                console.log('hello')
+            }
         {props.onClose()};
     }
 

@@ -27,10 +27,6 @@ nav li:hover {
   cursor: pointer;
 }
 
-.total {
-  float: right;
-}
-
 .total:hover {
   color: black;
   background-color: white;
@@ -59,4 +55,12 @@ nav li:hover {
   color: grey;
   border-bottom: 1px solid grey;
   border-bottom-width: 50%;
+}
+
+.wishlist {
+  float: right;
+}
+
+.total {
+  float: right;
 }

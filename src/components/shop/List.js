@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clothes from '../../reducers/Clothes';
 import Checkout from '../cart/Checkout';
+import Wishlist from '../wishlist/Wishlist';
 import HomePage from './Home';
 import Item from './Item';
 import './List.css';
@@ -106,6 +107,9 @@ const List = (props) => {
     }
     if (visibleMenu === 'CHECKOUT') {
         return <Checkout />
+    }
+    if (visibleMenu === 'WISHLIST') {
+        return <Wishlist />
     }
     const newList = items.filter(item => item.style === visibleMenu)
     const itemList = newList.map(item => {

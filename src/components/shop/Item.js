@@ -19,6 +19,8 @@ const Item = (props) => {
         let currentItem = wishlist.filter(item => item.name === props.name )
         if (currentItem.length > 0) {
             toggle('fas fa-heart')
+        } else {
+            toggle('far fa-heart')
         }
     }
 
@@ -59,7 +61,7 @@ const Item = (props) => {
     const toggleWishlist = () => {
         if (wishlistIcon === 'far fa-heart') {
             toggle('fas fa-heart');
-            dispatch(addToWishlist(props.name, props.price, props.image))
+            dispatch(addToWishlist(props.name, props.price, props.image, props.type, props.style))
         } else {
             toggle('far fa-heart');
             let currentId = wishlist.filter(item => item.name === props.name )
@@ -82,7 +84,14 @@ const Item = (props) => {
             dispatch(addItem(props.name, props.price, props.image, selected, 1, props.type, props.type));
             selectSize(null);
         }  
+        checkWishlist();
         current = null;
+        let currentId = wishlist.filter(item => item.name === props.name )
+            if (currentId.length > 0) {
+                dispatch(removeFromWishlist(currentId[0].id))
+                console.log(currentId)
+                console.log('hello')
+            }
     }
 
     const sizeList = sizes.map(size => {
@@ -104,7 +113,7 @@ const Item = (props) => {
                 <br />
                 <button id={props.type === 'MISC' ? 'misc-button' : null}
                     onClick={selected !== null || props.type === 'MISC' ? () => addToCart() : () => modal()}
-                >Add to Cart</button>
+                >ADD TO CART</button>
             </div>
             <SizeModal 
                 image={props.image} 

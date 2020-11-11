@@ -8,7 +8,9 @@ const wishlist = (state = [], action) => {
                         name: action.name,
                         id: action.id,
                         price: action.price,
-                        image: action.image
+                        image: action.image,
+                        style: action.style,
+                        category: action.category
                     }
                 ]
             )

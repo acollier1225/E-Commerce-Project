@@ -64,13 +64,15 @@ export const changeDetails = (name, price, image, style, category) => {
     }
 }
 
-export const addToWishlist = (name, price, image) => {
+export const addToWishlist = (name, price, image, style, category) => {
     return {
         type: 'ADD_WISHLIST',
         name: name,
         price: price,
         image: image,
-        id: uuidv4()
+        id: uuidv4(),
+        style: style,
+        category: category
     }
 }
 

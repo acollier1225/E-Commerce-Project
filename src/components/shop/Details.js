@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { propTypes } from 'react-addons-css-transition-group';
 import { useSelector, useDispatch } from 'react-redux';
-import { addItem, increaseQuantity } from '../../actions';
+import { addItem, increaseQuantity, removeFromWishlist } from '../../actions';
 import './Details.css';
 
 const Details = () => {
     const details = useSelector(state => state.details)
     const cart = useSelector(state => state.cart)
+    const wishlist = useSelector(state => state.wishlist)
     const [selected, selectSize] = useState(null);
     const [quantity, changeQuantity] = useState(1)
     const dispatch = useDispatch();
@@ -64,10 +65,16 @@ const Details = () => {
             })
             selectSize(null);
         } else {
-            dispatch(addItem(details[0].name, details[0].price, details[0].image, selected, quantity));
+            dispatch(addItem(details[0].name, details[0].price, details[0].image, selected, quantity, details[0].style));
             selectSize(null);
         }
         current = null;  
+        let currentId = wishlist.filter(item => item.name === details[0].name )
+            if (currentId.length > 0) {
+                dispatch(removeFromWishlist(currentId[0].id))
+                console.log(currentId)
+                console.log('hello')
+            }
     }
 
     const sizeList = sizes.map(size => {

@@ -1,0 +1,10 @@
+.wishlist-page ul {
+  list-style-type: none;
+  max-width: 150px;
+  display: inline-flex;
+  /* float: left; */
+}
+
+.wishlist-li {
+  margin-right: 50px;
+}

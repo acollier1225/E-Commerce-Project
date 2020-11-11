@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeMenu, changeClothes, selectTab, changeDetails } from '../../actions';
 import ShoppingCart from '../cart/ShoppingCart';
 import Submenu from '../shop/submenu/Submenu';
-import Total from '../Total';
 import '../cart/ShoppingCart.css';
 import './Navbar.css';
+import wishlist from '../../reducers/Wishlist';
 
 
 const Navbar = () => {
@@ -15,11 +15,12 @@ const Navbar = () => {
 
     const cart = useSelector(state => state.cart);
     const selectedTab = useSelector(state => state.tab);
+    const wishlist = useSelector(state => state.wishlist);
 
     const dispatch = useDispatch();
     const ref = useRef();
 
-    const navs = ['HOME', 'MEN', 'WOMEN', 'KIDS'];
+    const navs = ['HOME', 'MEN', 'WOMEN', 'KIDS', 'WISHLIST'];
 
     const changeTab = (tab) => {
         dispatch(changeDetails())
@@ -33,18 +34,26 @@ const Navbar = () => {
     }
 
     const navList = navs.map(nav => {
+        if (nav === 'WISHLIST') {
+            return <li className="wishlist"
+                onMouseOver={() => hover(nav)} 
+                key={nav} 
+                onClick={() => changeTab(nav)} 
+                >
+                    {nav} ({wishlist.length})
+            </li>
+        }
         return <li 
             onMouseOver={() => hover(nav)} 
             key={nav} 
             onClick={() => changeTab(nav)} 
             className={tab(nav)}>
                 {nav}               {nav !== 'HOME' ? <i className="fas fa-angle-down"></i> : null}
-                
         </li>
     });
 
     const hover = (nav) => {
-        if (nav !== 'HOME') {
+        if (nav !== 'HOME' && nav !== 'WISHLIST') {
             hoverTab(nav);
             showMenu(true);
         }
@@ -99,7 +108,10 @@ const Navbar = () => {
         <div ref={ref}>
             <nav>
                 <ul>
-                    {navList}
+                    <div>
+                        {navList}
+                    </div>
+                    <div className="total">
                     <li className="total">
                         <div onClick={showCart} className="total">
                         <i className="fas fa-shopping-bag"></i>
@@ -107,10 +119,12 @@ const Navbar = () => {
                                 {cart.length}
                             </span> : null}
                         </div>
-                        <div className="shoppingCart">
+                        <div 
+                        className="shoppingCart">
                             { list  ? <ShoppingCart /> : null }
                         </div>
                     </li>
+                    </div>
                 </ul>
             </nav> 
             {showing ? <div id="submenu"><Submenu style={hoveredTab} onMouseOver={() => hover(hoveredTab)}></Submenu></div> : null}

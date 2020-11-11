@@ -10,6 +10,8 @@ const visibleMenu = (state = 'HOME', action) => {
             return state = 'KIDS'
         case 'CHECKOUT':
             return state = 'CHECKOUT'
+        case 'WISHLIST':
+            return state = 'WISHLIST'
         default:
             return state
     }
