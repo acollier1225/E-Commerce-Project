@@ -4,6 +4,7 @@ import visibleMenu from './VisibleMenu';
 import clothes from './Clothes';
 import tab from './Tab';
 import details from './Details';
+import wishlist from './Wishlist';
 import { combineReducers } from 'redux';
 
 const reducers = combineReducers({
@@ -12,7 +13,8 @@ const reducers = combineReducers({
     visibleMenu,
     clothes,
     tab,
-    details
+    details,
+    wishlist
 })
 
 export default reducers;

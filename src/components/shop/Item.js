@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, increaseQuantity, changeDetails } from '../../actions';
+import { addItem, increaseQuantity, changeDetails, addToWishlist, removeFromWishlist } from '../../actions';
 import SizeModal from './SizeModal';
 import './Item.css';
-// import { sizes } from '../../constants';
 
 const Item = (props) => {
     const [selected, selectSize] = useState(null);
     const [shown, showModal] = useState(false);
+    const [wishlistIcon, toggle] = useState('far fa-heart')
     const cart = useSelector(state => state.cart);
     const details = useSelector(state => state.details);
+    const wishlist = useSelector(state => state.wishlist);
     const dispatch = useDispatch();
     let current;
     let sizes;
+
+    const checkWishlist = () => {
+        let currentItem = wishlist.filter(item => item.name === props.name )
+        if (currentItem.length > 0) {
+            toggle('fas fa-heart')
+        }
+    }
+
+    useEffect(() => {
+        checkWishlist();
+    })
 
     if (props.type === 'SHOES' && props.style === 'MEN') {
         sizes = ['7', '7.5', '8', '8.5', '9', '9.5', '10']
@@ -44,6 +56,18 @@ const Item = (props) => {
         dispatch(changeDetails(props.name, props.price, props.image, props.type, props.style));
     }
 
+    const toggleWishlist = () => {
+        if (wishlistIcon === 'far fa-heart') {
+            toggle('fas fa-heart');
+            dispatch(addToWishlist(props.name, props.price, props.image))
+        } else {
+            toggle('far fa-heart');
+            let currentId = wishlist.filter(item => item.name === props.name )
+            console.log(currentId[0].id)
+            dispatch(removeFromWishlist(currentId[0].id))
+        }
+    }
+
     const addToCart = () => {
         current = cart.filter(item => item.name === props.name && item.size === selected);
         if (current.length > 0) {
@@ -71,7 +95,7 @@ const Item = (props) => {
             <br />
             <span className="link" onClick={() => showDetails()}>{props.name}</span> 
             <br />
-            ${props.price}.00
+            ${props.price}.00 <i onClick={() => toggleWishlist()} className={wishlistIcon}></i>
             <br />
             <div>
                 <ul className="sizes">

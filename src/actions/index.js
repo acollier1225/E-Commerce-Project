@@ -63,3 +63,20 @@ export const changeDetails = (name, price, image, style, category) => {
         category: category
     }
 }
+
+export const addToWishlist = (name, price, image) => {
+    return {
+        type: 'ADD_WISHLIST',
+        name: name,
+        price: price,
+        image: image,
+        id: uuidv4()
+    }
+}
+
+export const removeFromWishlist = (id) => {
+    return {
+        type: 'REMOVE_WISHLIST',
+        id: id
+    }
+}

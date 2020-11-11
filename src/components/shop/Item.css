@@ -46,3 +46,8 @@
 #misc-button {
   margin-top: 6px;
 }
+
+.list-item i {
+  float: right;
+  cursor: pointer;
+}
