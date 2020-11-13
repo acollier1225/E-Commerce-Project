@@ -64,3 +64,7 @@ nav li:hover {
 .total {
   float: right;
 }
+
+#google-auth {
+  float: right;
+}

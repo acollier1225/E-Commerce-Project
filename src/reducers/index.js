@@ -5,6 +5,7 @@ import clothes from './Clothes';
 import tab from './Tab';
 import details from './Details';
 import wishlist from './Wishlist';
+import authReducer from './Google';
 import { combineReducers } from 'redux';
 
 const reducers = combineReducers({
@@ -14,7 +15,8 @@ const reducers = combineReducers({
     clothes,
     tab,
     details,
-    wishlist
+    wishlist,
+    auth: authReducer
 })
 
 export default reducers;

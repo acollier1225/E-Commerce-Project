@@ -3,14 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem, increaseQuantity, changeDetails, addToWishlist, removeFromWishlist } from '../../actions';
 import SizeModal from './SizeModal';
 import './Item.css';
+import SignInModal from '../SignInModal';
 
 const Item = (props) => {
     const [selected, selectSize] = useState(null);
     const [shown, showModal] = useState(false);
+    const [showing, showSignInModal] = useState(false);
     const [wishlistIcon, toggle] = useState('far fa-heart')
     const cart = useSelector(state => state.cart);
     const details = useSelector(state => state.details);
     const wishlist = useSelector(state => state.wishlist);
+    const auth = useSelector(state => state.auth.isSignedIn);
     const dispatch = useDispatch();
     let current;
     let sizes;
@@ -58,15 +61,23 @@ const Item = (props) => {
         dispatch(changeDetails(props.name, props.price, props.image, props.type, props.style));
     }
 
+    const showSignIn = () => {
+        showSignInModal(!showing);
+    }
+
     const toggleWishlist = () => {
-        if (wishlistIcon === 'far fa-heart') {
-            toggle('fas fa-heart');
-            dispatch(addToWishlist(props.name, props.price, props.image, props.type, props.style))
+        if (auth) {
+            if (wishlistIcon === 'far fa-heart') {
+                toggle('fas fa-heart');
+                dispatch(addToWishlist(props.name, props.price, props.image, props.type, props.style))
+            } else {
+                toggle('far fa-heart');
+                let currentId = wishlist.filter(item => item.name === props.name )
+                console.log(currentId[0].id)
+                dispatch(removeFromWishlist(currentId[0].id))
+            }
         } else {
-            toggle('far fa-heart');
-            let currentId = wishlist.filter(item => item.name === props.name )
-            console.log(currentId[0].id)
-            dispatch(removeFromWishlist(currentId[0].id))
+            showSignIn();
         }
     }
 
@@ -124,6 +135,7 @@ const Item = (props) => {
                 onClose={() => modal()} 
                 show={shown} 
             />
+            <SignInModal onClose={() => showSignIn()} show={showing} />
         </div>
      );
 }

@@ -6,7 +6,7 @@ import Submenu from '../shop/submenu/Submenu';
 import '../cart/ShoppingCart.css';
 import './Navbar.css';
 import wishlist from '../../reducers/Wishlist';
-
+import GoogleAuth from '../GoogleAuth';
 
 const Navbar = () => {
     const [list, showList] = useState(false);
@@ -125,6 +125,7 @@ const Navbar = () => {
                         </div>
                     </li>
                     </div>
+                    <li id="google-auth"><GoogleAuth /></li>
                 </ul>
             </nav> 
             {showing ? <div id="submenu"><Submenu style={hoveredTab} onMouseOver={() => hover(hoveredTab)}></Submenu></div> : null}

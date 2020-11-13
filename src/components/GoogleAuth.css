@@ -1,0 +1,10 @@
+.google {
+  width: 100px;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+}
+
+.google:hover {
+  background-color: white;
+}

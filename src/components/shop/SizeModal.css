@@ -70,3 +70,19 @@
   height: 100%;
   max-height: 160px;
 }
+
+.modal-content-signin {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 45%;
+  max-width: 800px;
+  height: 15%;
+  text-align: center;
+}
+
+.modal-content-signin button {
+  top: 25px;
+  max-width: 100px;
+}
