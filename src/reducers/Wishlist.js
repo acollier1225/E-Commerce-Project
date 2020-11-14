@@ -21,4 +21,5 @@ const wishlist = (state = [], action) => {
     }
 }
 
+
 export default wishlist;

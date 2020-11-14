@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Item from '../shop/Item';
+import { fetchWishlist } from '../../actions/index';
 import './Wishlist.css'
 
 const Wishlist = () => {
