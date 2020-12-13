@@ -9,11 +9,11 @@
   position: relative;
 }
 
-.detail img:hover {
+/* .detail img:hover {
   transform: scale(1.5);
   max-width: 300px;
   max-height: 300px;
-}
+} */
 
 .detail span {
   display: inline;

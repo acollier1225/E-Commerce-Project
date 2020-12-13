@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import wishlist from '../apis/newWishlist'
 
 export const addItem = (name, price, image, size, quantity, style) => {
     return {

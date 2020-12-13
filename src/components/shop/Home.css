@@ -11,12 +11,34 @@
 }
 
 #snow {
-  height: 50%;
-  width: 50%;
+  height: 10%;
+  width: 30%;
 }
 
 #sweater {
-  width: 20%;
+  width: 30%;
   height: 10%;
-  margin-left: 50px;
+  margin-left: 16px;
+}
+
+#jacket {
+  width: 30%;
+  margin-left: 16px;
+  /* max-height: 250px; */
+}
+
+.pictures {
+  margin-top: 10px;
+}
+
+@media (max-width: 400px) {
+  .collection {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 401px) {
+  .collection {
+    font-size: 30px;
+  }
 }

@@ -7,8 +7,10 @@ import '../cart/ShoppingCart.css';
 import './Navbar.css';
 import wishlist from '../../reducers/Wishlist';
 import GoogleAuth from '../GoogleAuth';
+import DrawerToggleButton from './SideDrawer/DrawerToggleButton';
+import { propTypes } from 'react-addons-css-transition-group';
 
-const Navbar = () => {
+const Navbar = (props) => {
     const [list, showList] = useState(false);
     const [showing, showMenu] = useState(false);
     const [hoveredTab, hoverTab] = useState(null);
@@ -30,12 +32,12 @@ const Navbar = () => {
     }
 
     const tab = (nav) => {
-        return (selectedTab === nav) || hoveredTab === nav ? "selected-style" : null
+        return (selectedTab === nav) || hoveredTab === nav ? "navItem selected-style" : "navItem"
     }
 
     const navList = navs.map(nav => {
         if (nav === 'WISHLIST') {
-            return <li className="wishlist"
+            return <li className="navItem wishlist"
                 onMouseOver={() => hover(nav)} 
                 key={nav} 
                 onClick={() => changeTab(nav)} 
@@ -108,6 +110,9 @@ const Navbar = () => {
         <div ref={ref}>
             <nav>
                 <ul>
+                    <li className="toggleButtonLi">
+                        <DrawerToggleButton drawerClickHandler={props.drawerClickHandler} />
+                    </li>
                     <div>
                         {navList}
                     </div>
