@@ -14,7 +14,6 @@ const Details = () => {
     // let current = cart.filter(item => item.name === details[0].name && item.size === selected);
     let sizes;
 
-    console.log(details)
     if (details[0] == undefined) {
         sizes = []
     } else if (details[0].style === 'SHOES' && details[0].category === 'MEN') {
