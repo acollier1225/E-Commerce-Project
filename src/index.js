@@ -6,7 +6,13 @@ import reducers from './reducers/index';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk'
 
-let composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+let composeEnhancers = null;
+if (process.env.NODE_ENV === 'development') {
+    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+} else {
+    composeEnhancers = compose;
+}
+
 let store = createStore(
     reducers,
     composeEnhancers(applyMiddleware(reduxThunk))
