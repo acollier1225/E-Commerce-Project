@@ -130,7 +130,7 @@ const Navbar = (props) => {
                         </div>
                     </li>
                     </div>
-                    <li id="google-auth"><GoogleAuth /></li>
+                    {/* <li id="google-auth"><GoogleAuth /></li> */}
                 </ul>
             </nav> 
             {showing ? <div id="submenu"><Submenu style={hoveredTab} onMouseOver={() => hover(hoveredTab)}></Submenu></div> : null}

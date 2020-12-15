@@ -11,7 +11,7 @@ const LogoBar = () => {
     }
 
     return (
-        <div className="logo-bar"><span id="logo" onClick={() => home()}>StyleOut</span></div>
+        <div className="logo-bar"><span id="logo" onClick={() => home()}>Arco</span></div>
     )
 }
 

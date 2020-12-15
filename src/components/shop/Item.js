@@ -66,7 +66,7 @@ const Item = (props) => {
     }
 
     const toggleWishlist = () => {
-        if (auth) {
+        // if (auth) {
             if (wishlistIcon === 'far fa-heart') {
                 toggle('fas fa-heart');
                 dispatch(addToWishlist(props.name, props.price, props.image, props.type, props.style))
@@ -76,9 +76,9 @@ const Item = (props) => {
                 console.log(currentId[0].id)
                 dispatch(removeFromWishlist(currentId[0].id))
             }
-        } else {
-            showSignIn();
-        }
+        // } else {
+        //     showSignIn();
+        // }
     }
 
     const addToCart = () => {
