@@ -2,9 +2,8 @@
   width: 240px;
   height: 120px;
   text-align: center;
-  padding-bottom: 10%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-bottom: 30px;
+  margin: 0;
 }
 
 .cartItem img {

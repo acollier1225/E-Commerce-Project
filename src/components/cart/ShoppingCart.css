@@ -1,5 +1,5 @@
 .shoppingCart {
-  z-index: 200;
+  z-index: 100;
   position: absolute;
   top: 75px;
   right: 50px;
