@@ -78,3 +78,9 @@
   width: 100%;
   max-width: 273px;
 }
+
+@media (max-width: 414px) {
+  .detail {
+    margin-bottom: 200px;
+  }
+}
