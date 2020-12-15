@@ -1,3 +1,7 @@
+A mock e-commerce website created with React and Redux that allows you to view a selection of clothes and add items to your cart. 
+
+Hosted at http://arco-shop.herokuapp.com/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
