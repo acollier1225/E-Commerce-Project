@@ -7,7 +7,7 @@ import '../../cart/ShoppingCart.css';
 import '../Navbar.css';
 import wishlist from '../../../reducers/Wishlist';
 import GoogleAuth from '../../GoogleAuth';
-import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
+import DrawerToggleButton from './DrawerToggleButton';
 import "./SideDrawer.css"
 import { propTypes } from 'react-addons-css-transition-group';
 

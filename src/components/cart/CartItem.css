@@ -3,11 +3,11 @@
   height: 120px;
   text-align: center;
   padding-bottom: 30px;
-  margin: 0;
+  margin-bottom: 20px;
 }
 
 .cartItem img {
-  height: 90%;
+  height: 50px;
   width: 50px;
   padding: 3% 1% 0 0;
   margin-bottom: 0;

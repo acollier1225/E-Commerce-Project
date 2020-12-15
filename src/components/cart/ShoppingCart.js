@@ -28,8 +28,10 @@ const ShoppingCart = () => {
                     </div>    
                 )
             })}
-            <Total />
-            <button onClick={() => checkOut()} id="check-out">CHECK OUT</button>
+            <div id="cartBottom">
+                <Total />
+                <button onClick={() => checkOut()} id="check-out">CHECK OUT</button>
+            </div>
         </div>
      );
 }
